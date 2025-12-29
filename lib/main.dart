@@ -3,18 +3,24 @@ import 'package:provider/provider.dart';
 
 import 'package:rpg_todo/providers/todo_provider.dart';
 import 'package:rpg_todo/screens/home_screen.dart';
+import 'package:rpg_todo/screens/onBoarding_screen.dart';
+import 'package:rpg_todo/services/shared_preferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final firstLaunch = await isFirstLaunch();
+
   runApp(
     ChangeNotifierProvider(
       create: (_) => TodoProvider(),
-      child: const MyApp(),
+      child: MyApp(firstLaunch: firstLaunch),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final bool firstLaunch;
+  const MyApp({super.key, required this.firstLaunch});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +33,15 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: firstLaunch ? OnboardingScreen(
+        onFinish: () {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(
+              builder: (_) => const HomeScreen(),
+            ),
+          );
+        }
+      ) : const HomeScreen(),
     );
   }
 }
