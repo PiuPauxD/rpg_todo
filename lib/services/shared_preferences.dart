@@ -1,12 +1,13 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+const _onboardingKey = 'seenOnboarding';
+
 Future<bool> isFirstLaunch() async {
   final prefs = await SharedPreferences.getInstance();
-  final firstLaunch = prefs.getBool('first_launch') ?? true;
+  return !(prefs.getBool(_onboardingKey) ?? false);
+}
 
-  if (firstLaunch) {
-    await prefs.setBool('first_launch', false);
-  }
-
-  return firstLaunch;
+Future<void> setOnboardingSeen() async {
+  final prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('seenOnboarding', true);
 }

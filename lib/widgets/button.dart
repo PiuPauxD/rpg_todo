@@ -5,14 +5,12 @@ class Button extends StatelessWidget {
   final Color buttonColor;
   final Color textColor;
   final String buttonText;
-  final IconData buttonIcon;
 
   const Button({
     super.key, 
     required this.onTap, 
     required this.buttonColor, 
     required this.buttonText, 
-    required this.buttonIcon,
     required this.textColor,
   });
 

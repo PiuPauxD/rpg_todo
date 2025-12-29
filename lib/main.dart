@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:rpg_todo/providers/todo_provider.dart';
-import 'package:rpg_todo/screens/home_screen.dart';
 import 'package:rpg_todo/screens/onBoarding_screen.dart';
+import 'package:rpg_todo/screens/register_screen.dart';
 import 'package:rpg_todo/services/shared_preferences.dart';
 
 void main() async {
@@ -34,14 +34,14 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: firstLaunch ? OnboardingScreen(
-        onFinish: () {
+        onFinish: () async {
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(
-              builder: (_) => const HomeScreen(),
+              builder: (_) => const RegisterScreen(),
             ),
           );
         }
-      ) : const HomeScreen(),
+      ) : const RegisterScreen(),
     );
   }
 }
