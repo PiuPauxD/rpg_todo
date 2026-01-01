@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
-class RegistrationTextfield extends StatelessWidget {
+class AddTaskTextfield extends StatelessWidget {
 
   final TextEditingController controller;
-  final String labelFieldName;
+  final String labelName;
+
   final String hintFieldName;
+  final IconData icon;
   final int maxLines;
 
-  const RegistrationTextfield({
-    super.key, 
-    required this.controller,
-    required this.labelFieldName,
-    required this.hintFieldName,
-    required this.maxLines,
-  });
+  const AddTaskTextfield({
+    super.key, required this.controller, 
+    required this.labelName, 
+    required this.hintFieldName, 
+    required this.icon, 
+    required this.maxLines}
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,8 @@ class RegistrationTextfield extends StatelessWidget {
       maxLines: maxLines,
       controller: controller,
       decoration: InputDecoration(
-        labelText: labelFieldName,
+        suffixIcon: Icon(icon),
+        label: Text(labelName),
         labelStyle: TextStyle(
           fontSize: 14,
           color: Colors.grey,

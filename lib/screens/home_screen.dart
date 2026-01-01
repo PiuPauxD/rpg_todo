@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:rpg_todo/widgets/add_todo_dialog.dart';
+import 'package:rpg_todo/screens/add_task_screen.dart';
 import 'package:rpg_todo/widgets/level_bar.dart';
 import 'package:rpg_todo/widgets/todo_item.dart';
 
@@ -16,6 +16,10 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => Navigator.pop(context), 
+          icon: Icon(Icons.arrow_back_ios_outlined),
+        ),
         title: const Text('RPG Todo'),
       ),
 
@@ -34,19 +38,52 @@ class HomeScreen extends StatelessWidget {
               },
             ),
           ),
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+            child: Align(
+              alignment: Alignment.bottomRight,
+              child: Container(
+                width: 50,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Color(0xffE25535),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: IconButton(
+                  onPressed: () => Navigator.push(
+                    context, 
+                    MaterialPageRoute(
+                      builder: (_) => AddTaskScreen(),
+                    ),
+                  ), 
+                  icon: Icon(
+                    Icons.add_outlined,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => _showAddDialog(context),
-        child: const Icon(Icons.add),
-      ),
+
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => Navigator.push(
+      //     context,
+      //     MaterialPageRoute(
+      //       builder: (_) => AddTaskScreen(),
+      //     ),
+      //   ),
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 
-  void _showAddDialog(BuildContext context) {
-    showDialog(
-      context: context, 
-      builder: (_) => const AddTodoDialog(),
-    );
-  }
+  // void _showAddDialog(BuildContext context) {
+  //   showDialog(
+  //     context: context, 
+  //     builder: (_) => const AddTaskScreen(),
+  //   );
+  // }
 }

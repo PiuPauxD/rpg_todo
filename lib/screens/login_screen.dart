@@ -45,21 +45,21 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Align(
                 alignment: Alignment.topCenter,
                 child: Padding(
-                  padding: EdgeInsets.only(top: height * 0.015),
+                  padding: EdgeInsets.only(top: height * 0.01),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Icon(
                         Icons.check_box_outlined,
-                        size: 32,
+                        size: height * 0.035,
                         color: Color(0xffE25535),
                       ),
-                      const SizedBox(width: 15),
+                      const SizedBox(width: 5),
                       Text(
                         'RPG-Todo',
                         style: TextStyle(
-                          fontSize: 26,
+                          fontSize: height * 0.025,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
@@ -72,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
               width: width,
-              height: height * 0.73,
+              height: height * 0.8,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: Colors.white,
@@ -94,12 +94,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       const SizedBox(height: 15),
                       RegistrationTextfield(
+                        maxLines: 1,
                         controller: emailController,
                         labelFieldName: 'Email',
                         hintFieldName: 'Enter email',
                       ),
                       const SizedBox(height: 15),
                       RegistrationTextfield(
+                        maxLines: 1,
                         controller: passwordController,
                         labelFieldName: 'Pasword',
                         hintFieldName: 'Enter password',
