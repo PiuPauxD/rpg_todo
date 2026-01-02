@@ -4,11 +4,7 @@ class LevelBar extends StatelessWidget {
   final int level;
   final int xp;
 
-  const LevelBar({
-    super.key, 
-    required this.level, 
-    required this.xp,
-  });
+  const LevelBar({super.key, required this.level, required this.xp});
 
   @override
   Widget build(BuildContext context) {
@@ -17,14 +13,15 @@ class LevelBar extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-          Text(
-            'Level $level',
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          const SizedBox(height: 8),
           LinearProgressIndicator(
             value: (xp % 100) / 100,
+          ),
+          const SizedBox(height: 8),
+          Center(
+            child: Text(
+              'Level $level',
+              style: Theme.of(context).textTheme.titleMedium,
+            ),
           ),
         ],
       ),
